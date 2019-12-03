@@ -1,0 +1,9 @@
+-- MIDI Connectivity
+
+-- define MIDI "sound" in SuperDirt startup
+-- use MIDI "sound" in Tidal patterns
+-- notes, channels, CC's
+
+-- can control external or internal MIDI devices, depending on OS/software capabilities
+
+-- including DAW stuff (your mileage may vary)
