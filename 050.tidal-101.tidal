@@ -1,16 +1,68 @@
--- tidal 101 (just samples for now)
+# UNAVOIDABLE TIDAL 101 SEGMENT 
 
--- pattern syntax
+-- playing a sample folder
 
+d1 $ s "numbers" # cps 1
+
+hush
+
+-- selecting samples in a folder
+
+d1 $ s "numbers" # n "3" 
+
+hush
+
+-- fill up those cycles!
+
+d1 $ s "k cp s ch"
+
+hush
+
+-- pattern groups: [] 
+
+d1 $ s "[k kit1] [[cp k] [ch ch]]"
+
+hush
+
+
+-- multiplication and division
+
+d1 $ s "k*2 [s cp]/2"
+
+hush
 
 
 -- effects and DSP
 
+d1 $ s "numbers" # room 0.5 # size 0.5
+
+hush
+
+
 -- combining patterns 
 
--- structure from the left
+d1 $ speed "1*4 [0.5*3 0.75*2]/2" 
+  # s "[k cp peri doru]/3"  
+  # n "[1 4 0]*4"
+  # pan "[1 0]*3" 
+  # shape "<0 0.3 0.1 0.6 0.7>"
+
+hush
 
 -- transformation functions
 
+d1 $ fast 1 $ every 3 (0.5 ~>) $ every 2 ( 0.125 ~> ) $ s "k cp*2 s doru*2" 
+
 -- sample mangling
 
+d1
+  $ every 3 rev
+  $ chop "[32 16 4]*2" 
+  $ s "[numbers peri:1*4] [k cp cp ch]"
+
+d1
+  $ slow 4
+  $ striate' 128 (1/5)
+  $ s "numbers"
+
+  hush
