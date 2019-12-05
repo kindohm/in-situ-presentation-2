@@ -1,3 +1,6 @@
+-- we didn't talk about this stuff
+-- in the presentation
+
 :set -XOverloadedStrings
 :set prompt ""
 :set prompt-cont ""

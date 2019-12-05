@@ -6,12 +6,18 @@ do
   let cpsPat = "<4 2 3 2 1 1 1>"
       plies = "<5 10 5 15>"  
   d1
+    $ slow 2 
     $ stack [
       plyWith plies (# gain 0.8) 
-        $ note "c3" # midichan 2
-    ] # s "midi" # cps cpsPat
+        $ note "c3" # midichan 2 # s "midi", 
+      plyWith plies (|* legato 0.85) $ s "turret" # legato 1 # begin 0.1 # gain 0.8
+    ]  # cps cpsPat
 
-
+hush
 
 
 hush
+
+
+
+d1 $ s "bd|sd|bass|kit1 cp|ch"
