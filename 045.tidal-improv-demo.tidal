@@ -1,2 +1,16 @@
 # Tidal improv demo 
 
+d1 
+  $ whenmod 10 7 (iter 8)
+  $ whenmod 8 6 (jux rev)
+  $ foldEvery [3,4] (0.25 ~>)
+  $ stack [
+    degradeBy 0.5 
+      $ s "akuma1*16" # n (irand 10) # unit "c" # speed 16,
+    ] # cps (160/120/2)
+
+
+    
+    hush
+
+

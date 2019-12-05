@@ -4,15 +4,27 @@
 -- use MIDI "sound" in Tidal patterns
 -- notes, channels, CC's
 
+let chan13 = midichan 12
+
 d1 
-  $ every 3 (|+ note 2) 
-  $ every 2 rev 
-  $ note "[c5 d5] [g4 d3]" # s "midi" # midichan 12 # gain 1.1
+  $ stack [
+    every 3 (|+ note 2) 
+      $ every 2 rev 
+      $ note "[c5 d5] [g4 d3]"  # gain 1.1 
+    , ccv "[0 50 90 127]/3" # ccn "1"
+    , slow 4 $ ccv "<0 45 77 99 100 127>" # ccn 3 ]
+    # s "midi" # chan13
+
 
 d2 
-  $ ccn "[1 3]*4" 
-  # ccv (range 0 127 $ slow 10 sine)
-  # s "midi" # midichan 12
+  $ stack [
+    ccv "[0 50 90 127]/3" # ccn "[1 3]*3" 
+  ] # s "midi" # midichan 12
+
+
+d1 $ note "c3" # s "midi" # midichan 2
+
+hush
 
 hush
 
@@ -20,3 +32,10 @@ hush
 
 -- including DAW stuff (your mileage may vary)
 
+
+
+
+MIDIClient.init;
+~midiOut = MIDIOut.newByName("Scarlett 2i4 USB", "Scarlett 2i4 USB");
+~midiOut.latency = 0;
+~dirt.soundLibrary.addMIDI(\midi, ~midiOut);

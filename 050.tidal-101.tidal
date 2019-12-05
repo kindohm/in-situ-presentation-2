@@ -1,8 +1,27 @@
 # UNAVOIDABLE TIDAL 101 SEGMENT 
 
+
+-- you don't need to know Haskell
+
+-- you need to be good friends with a keyboard
+
+
+
+
+
+
+
 -- playing a sample folder
 
-d1 $ s "numbers" # cps 1
+d1 $ s "k" # cps 1 
+
+hush
+
+
+
+hush
+
+# cps 1
 
 hush
 
@@ -20,6 +39,9 @@ hush
 
 -- pattern groups: [] 
 
+d1 $ s "[k] [k k] [k] [k]"
+
+
 d1 $ s "[k kit1] [[cp k] [ch ch]]"
 
 hush
@@ -27,16 +49,28 @@ hush
 
 -- multiplication and division
 
+d1 $ s "[k ch]/3 cp"
+
 d1 $ s "k*2 [s cp]/2"
 
 hush
 
 -- euclid
 
+d1 $ s "<k cp s ch kit1 kit2>"
+
+d1 $ s "k(<3 5>,<8 7 9 11>,<0 1 2>)"
+
+
+
+
+
 
 -- effects and DSP
 
-d1 $ s "numbers" # room 0.5 # size 0.5
+d1 $ s "k*16" # pan (fast 3 $ sine)
+
+d1 $ s "numbers" # speed 0.5
 
 hush
 
@@ -53,6 +87,11 @@ hush
 
 -- transformation functions
 
+d1 $ every 3 (0.25 ~>) $ s "k ch cp s"
+
+hush
+
+
 d1 $ fast 1 $ every 3 (0.5 ~>) $ every 2 ( 0.125 ~> ) $ s "k cp*2 s doru*2" 
 
 -- sample mangling
@@ -63,8 +102,12 @@ d1
   $ s "[numbers peri:1*4] [k cp cp ch]"
 
 d1
-  $ slow 4
-  $ striate' 128 (1/5)
+  $ striate' 512 (1/5)
   $ s "numbers"
 
+
+d1 $ s "k" # speed 0.2
+
   hush
+
+  
